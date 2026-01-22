@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For U Piyaa</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Animate CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<body
+  class="min-h-screen flex justify-center items-center bg-cover bg-center relative"
+  style="background-image: url('bg.jpg');"
+  <!-- Overlay agar teks jelas -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Audio (TINGGAL MASUKKAN MP3) -->
+  <audio id="bgMusic" loop>
+    <source src="audio/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Kartu -->
+  <div
+    id="kartu"
+    class="relative z-10 bg-white/90 backdrop-blur-md
+           border border-gray-300 shadow-2xl rounded-2xl
+           px-8 py-6 w-full max-w-4xl m-6
+           text-center animate__animated animate__backInDown"
+  >
+    <h1 class="text-3xl font-semibold">HOLAA PIYAA 🫶</h1>
+
+    <h2
+      class="text-4xl text-blue-600 font-bold mt-2
+             animate__animated animate__pulse animate__infinite"
+    >
+      SILVYA RAHMA
+    </h2>
+
+    <button
+      onclick="ubahKartu()"
+      class="mt-6 w-full p-3 bg-blue-600 text-white rounded-lg
+             hover:bg-blue-800 transition
+             animate__animated animate__tada"
+    >
+      Klik Disini Sayanggg 😘
+    </button>
+  </div>
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+
+  <script>
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 },
+    });
+
+    const kartu = document.getElementById("kartu");
+    const music = document.getElementById("bgMusic");
+
+    function ubahKartu() {
+      // Mainkan musik (aman dari blokir browser)
+      music.volume = 0.4;
+      music.play();
+
+      kartu.innerHTML = `
+        <div class="max-h-[75vh] overflow-y-auto text-left pr-2
+                    animate__animated animate__zoomIn">
+
+          <p class="text-lg leading-relaxed whitespace-pre-line">
+Hai piyaa ❤️❤️,
+
+Abang titip pesan ini yaa dari website ini. Abang mau piyaa baca ini walaupun abang tau kondisi piyaa saat ini lagi tidak baik dan tidak bagus ke abang. Abang menghargai ruang yang lagi piyaa butuhin.
+
+Beberapa hari ini abang banyak diam karena selalu kepikiran piyaa setelah kejadian kemarin. Abang sadar cara abang menyampaikan rasa sering berubah menjadi luka buat piyaa.
+
+Kalimat abang waktu itu salah, menyakitkan, dan gak pantas. Itu tanggung jawab abang sepenuhnya.
+
+Pesan ini bukan untuk minta piyaa cepat maafin, tapi untuk bilang:
+"Abang benar-benar mengerti kenapa piyaa terluka."
+
+Tentang piyaa, abang gak pernah melihat piyaa rendah. Justru sebaliknya, abang sering gagal menjaga orang yang harusnya paling abang lindungi 😔.
+
+Kalau suatu hari nanti piyaa siap ngobrol lagi, abang ada di sini 🤍
+Kalau belum, abang tetap menghormati proses piyaa.
+
+Jaga diri baik-baik yaa sayang 💖
+          </p>
+
+          <p class="mt-6 text-right italic">
+            — Dari Abang, Risandy Syahnakri —
+          </p>
+
+          <button
+            onclick="tutup()"
+            class="mt-6 w-full p-3 bg-slate-600 text-white rounded-lg
+                   hover:bg-slate-900 transition"
+          >
+            Tutup
+          </button>
+        </div>
+      `;
+    }
+
+    function tutup() {
+      music.pause();
+      music.currentTime = 0;
+      location.reload();
+    }
+  </script>
+
+</body>
+</html>
